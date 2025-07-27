@@ -26,6 +26,31 @@
 
 
 
+
+
+% including figures
+\newpage
+\begin{figure}
+    \centering
+    \includegraphics[width = \linewidth,
+                     trim = 0 0 0 0, clip]{}
+\end{figure}
+
+
+% Multi-column 
+\newpage
+\begin{paracol}{2}
+    % ============================================
+    \lipsum
+    % ============================================
+    \switchcolumn
+    % ============================================
+    \lipsum
+\end{paracol}
+
+
+
+
 % ================================================
 \end{document}
 % ================================================
