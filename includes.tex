@@ -1,41 +1,35 @@
+% ==============================================================================
 \usepackage{lipsum}             % for body of text
 \usepackage{charter}            % for font
 \usepackage{hyperref}           % for links
-\usepackage{graphicx}           % for figures
+\usepackage{graphicx}           % for figures, and image-background
 \usepackage{pdfpages}
 \usepackage{subcaption}         % for subfigures
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}   % math related
 \usepackage{enumitem}			% for enumerations
 \usepackage{paracol}			% for multiple columns
-
-% setting colour of page
-\usepackage[HTML]{xcolor}
-
-% % classic black and white
-% \pagecolor[HTML]{   FFFFFF}       % Background color: white (#FFFFFF)
-% \color[HTML]{       000000}           % Text color: black (#000000)
-
+\usepackage{soul}				% for strike-through \st{}
+\usepackage[HTML]{xcolor}		% setting colour of page
+% ==============================================================================
 % Egg-shell white and charcoal
-\pagecolor[HTML]{   FAF9F6}       % Background color: white (#FFFFFF)
-\color[HTML]{       2E2E2E}           % Text color: black (#000000)
+\pagecolor[HTML]{   FAF9F6}		% Background color: white (#FFFFFF)
+\color[HTML]{       2E2E2E}     % Text color: black (#000000)
+% ==============================================================================
+\usepackage[absolute,overlay]{textpos}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{eso-pic}
 
-% % Inverted
-% \pagecolor[HTML]{   1E1E1E}       % Background color: white (#FFFFFF)
-% \color[HTML]{       E8E6E3}           % Text color: black (#000000)
-
-% % Pale Beige | Dark Brown
-% \pagecolor[HTML]{   F4ECD8}       % Background color: white (#FFFFFF)
-% \color[HTML]{       3B3228}           % Text color: black (#000000)
-
-% % Bluish Gray | Bluish Gray - this is pretty nice
-% \pagecolor[HTML]{   EDF1F5}
-% \color[HTML]{       2D2D2D}
-
-% % Light Sage Green | Soft Black
-% \pagecolor[HTML]{   EFF5EC}
-% \color[HTML]{       2E2C2A}
-
-% % Very Pale Rose | Soft Charcoal
-% \pagecolor[HTML]{   FFF6F6}
-% \color[HTML]{       303030}
+% \AddToShipoutPictureBG{
+%   \begin{tikzpicture}[remember picture, overlay]
+%     \node[opacity=0.2, inner sep=0pt] at (current page.center) {
+%       \includegraphics[width=1.1\paperwidth]{
+%       /Users/vrsreeganesh/Pictures/pink00.jpg
+%       }
+%     };
+%   \end{tikzpicture}
+% }
+% ==============================================================================
+\setlist[enumerate]{itemsep=4pt, parsep=0pt}
+% ==============================================================================

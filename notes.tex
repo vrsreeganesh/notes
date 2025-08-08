@@ -3,49 +3,40 @@
 % ================================================
 \input{includes}    % contains everything
 % ================================================
-\usepackage[paperwidth  = 330mm  , 
-            paperheight = 210mm   ,
-            left        = 0.75cm,
-            right       = 0.75cm,
-            top         = 10mm,
-            bottom      = 10mm]{geometry}
+\usepackage[paperheight = 195mm,
+            paperwidth  = 300mm, 
+            top         = 4mm,
+            bottom      = 6mm,
+            left        = 6mm,
+            right       = 6mm]{geometry}
 % ================================================
 \title{TITLE}
 \author{SVR}
 \date{\today}
-
-
 % ================================================
 \begin{document}
 \maketitle
 % ================================================
 
 
-
+\lipsum
 \lipsum
 
-
-
-
-
-% % including figures
-% \newpage
-% \begin{figure}
-%     \centering
-%     \includegraphics[width = \linewidth,
-%                      trim = 0 0 0 0, clip]{}
-% \end{figure}
 
 
 % Multi-column 
 \newpage
 \begin{paracol}{2}
     % ============================================
-    \lipsum
+    \section*{Programme Counter}
+    \lipsum[0-1]
     % ============================================
     \switchcolumn
     % ============================================
-    \lipsum
+    \section*{Daemon}
+    \lipsum[0-1]
+    \section*{Instruction List}
+    \lipsum[0-1]
 \end{paracol}
 
 
