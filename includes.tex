@@ -11,11 +11,17 @@
 \usepackage{paracol}			% for multiple columns
 \usepackage{soul}				% for strike-through \st{}
 \usepackage[HTML]{xcolor}		% setting colour of page
+
 % ==============================================================================
+% The following section is to set the colour of the background and text
+% ------------------------------------------------------------------------------
 % Egg-shell white and charcoal
 \pagecolor[HTML]{   FAF9F6}		% Background color: white (#FFFFFF)
 \color[HTML]{       2E2E2E}     % Text color: black (#000000)
+
 % ==============================================================================
+% The following section ensures addition of a picture as a background
+% ------------------------------------------------------------------------------
 \usepackage[absolute,overlay]{textpos}
 \usepackage{graphicx}
 \usepackage{tikz}
@@ -30,6 +36,58 @@
 %     };
 %   \end{tikzpicture}
 % }
+
 % ==============================================================================
 \setlist[enumerate]{itemsep=4pt, parsep=0pt}
 % ==============================================================================
+
+% ==============================================================================
+% COMMENT: For C++ programming
+% ------------------------------------------------------------------------------
+% ==============================================================================
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define a nicer color scheme
+\definecolor{codebg}{rgb}{0.97,0.97,0.97}
+\definecolor{codeframe}{rgb}{0.8,0.8,0.8}
+\definecolor{codekw}{rgb}{0.0,0.4,0.8}
+\definecolor{codecomment}{rgb}{0.3,0.5,0.3}
+\definecolor{codestring}{rgb}{0.8,0.2,0.2}
+\definecolor{codenumber}{rgb}{0.5,0.5,0.5}
+
+\lstdefinelanguage{C++}{
+  language		= C++,
+  morekeywords	= {constexpr, nullptr, noexcept, thread_local, alignas, alignof, char8_t, char16_t, char32_t, thread},
+  sensitive		= true,
+  morecomment	= [l]{//},
+  morecomment	= [s]{/*}{*/},
+  morestring	= [b]",
+  morestring	= [b]'
+}
+
+\lstset{
+    language			= C++,
+    backgroundcolor		= \color{codebg},
+    frame				= single,
+    rulecolor			= \color{codeframe},
+    framesep			= 8pt,
+    framerule			= 0.8pt,
+    xleftmargin			= 15pt,
+    xrightmargin		= 5pt,
+    aboveskip			= 1em,
+    belowskip			= 1em,
+    columns				= fullflexible,
+    keepspaces			= true,
+    basicstyle			= \ttfamily\footnotesize,
+    keywordstyle		= \color{codekw}\bfseries,
+    commentstyle		= \color{codecomment}\itshape,
+    stringstyle			= \color{codestring},
+    numberstyle			= \tiny\color{codenumber},
+    numbers				= left,
+    numbersep			= 10pt,
+    showstringspaces	= false,
+    tabsize				= 4,
+    breaklines			= true,
+    breakatwhitespace	= true
+}
