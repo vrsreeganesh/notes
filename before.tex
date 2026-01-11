@@ -1,21 +1,59 @@
 % ==============================================================================
-\documentclass[12pt, twocolumn]{extarticle}
+\documentclass[8pt]{extarticle}
 % ==============================================================================
 \input{includes}    % contains everything
-% \setlist[enumerate]{itemsep=8pt, parsep=0pt}
-\setlist[enumerate]{itemsep=12pt, parsep=0pt, leftmargin=*}
-\setlist[itemize]{itemsep=4pt, parsep=0pt, leftmargin=*}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{soul}
+\usepackage{verbatim} % allows verbatim input
+\usepackage{eso-pic}
+\usepackage{tabularx} 
+\usepackage{datetime}
+
+\AddToShipoutPictureBG{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[opacity=0.14, inner sep=0pt] at (current page.center) {
+      % \includegraphics[width    = \paperwidth,
+      %                  height   = \paperheight]{
+      % /Users/vrsreeganesh/Pictures/blueflowers00.jpg
+      % }
+      % \includegraphics[width=2.1\linewidth]{
+      % /Users/vrsreeganesh/Pictures/pink00.jpg
+      % }
+      \includegraphics[width=1.1\paperwidth]{
+      /Users/vrsreeganesh/Pictures/pink00.jpg
+      }
+    };
+  \end{tikzpicture}
+}
+% \setlist[enumerate]{itemsep=4pt, parsep=0pt}
+% \setlist[enumerate]{  itemsep=6pt, parsep=0pt, leftmargin=*}
+\setlist[enumerate]{  itemsep=3pt, parsep=0pt, leftmargin=*}
+\setlist[itemize]{    itemsep=4pt, parsep=0pt, leftmargin=*}
 % ==============================================================================
-\usepackage[paperheight = 195mm,
-            paperwidth  = 300mm, 
-            top         = 4mm,
-            bottom      = 6mm,
-            left        = 6mm,
-            right       = 6mm]{geometry}
+% \usepackage[paperwidth  = 201mm, 
+%             paperheight = 130mm,
+%             left        = 12pt,
+%             right       = 12pt,
+%             top         = 0.2cm,
+%             bottom      = 0.4cm]{geometry}
+\usepackage[paperwidth  = 241mm, 
+            paperheight = 156mm,
+            left        = 12pt,
+            right       = 12pt,
+            top         = 0.2cm,
+            bottom      = 0.4cm]{geometry}
+\newlength{\savewidth}
 % ==============================================================================
-\title{TITLE}
+\title{Main Thread}
 \author{SVR}
 \date{\today}
 
+\setlength{\parskip}{6pt}
+\newcommand{\tab}{\vspace{4pt}\newline \hspace*{4pt} \textbullet \hspace{4pt}}
+\newcommand{\done}{\dotfill \textbf{done}}
+\newcommand{\thickline}{\leavevmode\leaders\hrule height 1.0pt\hfill\kern0pt}
 % ==============================================================================
-\newcommand{\tab}{\vspace*{8pt}\newline\hspace*{2em}\textbullet \hspace{4pt}}
+\begin{document}
+% ==============================================================================
