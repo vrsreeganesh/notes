@@ -1,25 +1,145 @@
 % ==============================================================================
-% \documentclass[12pt, twocolumn]{extarticle}
 \documentclass[12pt]{extarticle}
+\usepackage{lipsum}             % for body of text
+\usepackage{charter}            % for font
+\usepackage[colorlinks  =   true, 
+            linkcolor   =   blue]{hyperref}
+\usepackage{graphicx}           % for figures, and image-background
+\usepackage{pdfpages}           % for appending pdf pages
+\usepackage{subcaption}         % for subfigures
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}   % math related
+\usepackage{enumitem}           % for enumerations
+\usepackage{paracol}            % for multiple columns
+\usepackage{soul}               % for strike-through \st{}
+\usepackage[HTML]{xcolor}       % setting colour of page
+\usepackage{etoc}               % The magic package for multiple TOCs
 % ==============================================================================
-\input{includes}    % contains everything
-\setlength{\parskip}{   4mm}
-\setlength{\parindent}{ 0mm}
-\setlist[enumerate]{itemsep=12pt, parsep=0pt, leftmargin=*}
+% controls spacing around sections and subsections
+\usepackage{titlesec}
+\titlespacing*{\section}
+  {0mm}                         % left indent
+  {3.5ex plus 1ex minus .2ex}   % space before section
+  {-2mm}                        % space after section (THIS removes the gap)
+
+\titlespacing*{\subsection}
+  {0mm}                         % left indent
+  {0.5ex plus 1ex minus .2ex}   % space before section
+  {-2mm}                        % space after section (THIS removes the gap)
+% Page-colour ==================================================================
+\usepackage[HTML]{xcolor}       % setting colour of page
+\pagecolor[HTML]{   FAF9F6}     % Background color: white (#FFFFFF)
+\color[HTML]{       2E2E2E}     % Text color: black (#000000)
+% ==============================================================================
+% \setlist[enumerate]{itemsep=4pt, parsep=0pt}
+\setlist[enumerate]{itemsep=4pt, parsep=0pt, leftmargin=*}
 \setlist[itemize]{itemsep=4pt, parsep=0pt, leftmargin=*}
+\setlength{\parskip}{7mm}
+\setlength{\parindent}{0mm}
 % ==============================================================================
-\usepackage[paperheight = 277.09mm, %916mm,
-            paperwidth  = 228.9925mm,%  757mm, 
-            top         = 4mm,
-            bottom      = 6mm,
-            left        = 6mm,
-            right       = 6mm]{geometry}
+% The following section ensures addition of a picture as a background
+% ------------------------------------------------------------------------------
+\usepackage[absolute,overlay]{textpos}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{eso-pic}
 % ==============================================================================
-% \title{TITLE}
+% COMMENT: For C++ programming
+% ==============================================================================
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define a nicer color scheme
+\definecolor{codebg}{rgb}{0.97,0.97,0.97}
+\definecolor{codeframe}{rgb}{0.8,0.8,0.8}
+\definecolor{codekw}{rgb}{0.0,0.4,0.8}
+\definecolor{codecomment}{rgb}{0.3,0.5,0.3}
+\definecolor{codestring}{rgb}{0.8,0.2,0.2}
+\definecolor{codenumber}{rgb}{0.5,0.5,0.5}
+
+\lstdefinelanguage{C++}{
+  language      = C++,
+  morekeywords  = {constexpr, nullptr, noexcept, thread_local, alignas, alignof, char8_t, char16_t, char32_t, thread},
+  sensitive     = true,
+  morecomment   = [l]{//},
+  morecomment   = [s]{/*}{*/},
+  morestring    = [b]",
+  morestring    = [b]'
+}
+
+\lstset{
+    language            = C++,
+    backgroundcolor     = \color{codebg},
+    frame               = single,
+    rulecolor           = \color{codeframe},
+    framesep            = 8pt,
+    framerule           = 0.8pt,
+    xleftmargin         = 15pt,
+    xrightmargin        = 5pt,
+    aboveskip           = 1em,
+    belowskip           = 1em,
+    columns             = fullflexible,
+    keepspaces          = true,
+    basicstyle          = \ttfamily\footnotesize,
+    keywordstyle        = \color{codekw}\bfseries,
+    commentstyle        = \color{codecomment}\itshape,
+    stringstyle         = \color{codestring},
+    numberstyle         = \tiny\color{codenumber},
+    numbers             = left,
+    numbersep           = 10pt,
+    showstringspaces    = false,
+    tabsize             = 4,
+    breaklines          = true,
+    breakatwhitespace   = true
+}
+% ==============================================================================
+\usepackage[paperheight =   277.09mm,
+            paperwidth  =   228.9925mm, 
+            left        =   6mm, 
+            right       =   61mm, 
+            top         =   6mm, 
+            bottom      =   6mm]{geometry}
+% ==============================================================================
 \author{SVR}
 \date{\today}
-
+\newcommand{\tab}{\vspace*{8pt}\newline\hspace*{2em}\textbullet \hspace{4pt}}
 % ==============================================================================
-\newcommand{\done}{\dotfill \textbf{done}}
-\newcommand{\tab}{\vspace*{8pt}\newline\hspace*{1em}\textbullet \hspace{4pt}}
+\newcommand{\MySidebarTOC}{%
+  % 1. Set the depth to 1 (Sections only) for this specific TOC
+  \etocsetnexttocdepth{1} 
+  
+  % % 2. Header
+  % \etocsettocstyle{\Large\bfseries\sffamily Navigation\vskip10pt}{}
+  
+  % 3. Style for sections (Resetting indent to be safe)
+  \etocsetstyle{section}
+    {\parindent0pt \vskip2mm} 
+    {\small\bfseries\sffamily}
+    {\leavevmode\makebox[7mm][l]{\etocnumber}\etocname\enspace\dotfill\enspace\etocpage\par}
+    {}
+    
+  \tableofcontents 
+}
+% ==============================================================================
+\definecolor{sidebarbg}{HTML}{FAF9F6}   % paper colour
+
+\AddToShipoutPictureBG{%
+  \AtPageLowerLeft{%
+    
+    % Gray sidebar background
+    \put(\LenToUnit{\dimexpr\paperwidth-58mm\relax},0){%
+      \color{sidebarbg}\rule{65mm}{\paperheight}%
+    }%
+
+    % Navigation Text
+    \put(\LenToUnit{\dimexpr\paperwidth-56mm\relax},\LenToUnit{\dimexpr\paperheight-4.5mm\relax}){
+      \begin{minipage}[t]{50mm}
+        \color{black}
+        \MySidebarTOC
+      \end{minipage}
+    }%
+  }%
+}
+% ==============================================================================
+\title{TITLE}\begin{document}\maketitle
 % ==============================================================================
